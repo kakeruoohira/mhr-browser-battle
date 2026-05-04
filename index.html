@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MHR風 2Dターン制バトル</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="game-shell">
+    <section class="select-screen" id="selectScreen" aria-label="敵選択">
+      <div class="select-header">
+        <h1>討伐対象を選択</h1>
+        <p>黒龍は実装済み。岩龍とパラサイトは仮画像で先に戦闘だけ動きます。</p>
+      </div>
+      <div class="enemy-select-grid" id="enemySelectGrid"></div>
+    </section>
+
+    <section class="battlefield" id="battleScreen" aria-label="バトルフィールド" hidden>
+      <div class="top-bar">
+        <div class="turn-pill">TURN <span id="turnNumber">1</span></div>
+        <div class="phase-text" id="phaseText">プレイヤー1の行動</div>
+      </div>
+
+      <div class="enemy-zone" id="enemyZone"></div>
+      <div class="log-panel">
+        <div class="message-log" id="messageLog">コマンドを選択してください。</div>
+        <div class="battle-log" id="battleLog"></div>
+      </div>
+      <div class="party-zone" id="partyZone"></div>
+    </section>
+
+    <section class="command-panel" id="commandPanel" aria-label="コマンド" hidden>
+      <div class="active-unit">
+        <div class="active-label">行動中</div>
+        <div class="active-name" id="activeUnitName">-</div>
+      </div>
+
+      <div class="command-grid" id="commandGrid">
+        <button type="button" data-action="attack">攻撃</button>
+        <button type="button" data-action="skill1">スキル1</button>
+        <button type="button" data-action="skill2">スキル2</button>
+        <button type="button" data-action="ultimate">必殺技</button>
+      </div>
+
+      <div class="target-panel" id="targetPanel" hidden>
+        <div class="target-title">対象を選択</div>
+        <div class="target-list" id="targetList"></div>
+        <button class="sub-button" type="button" id="cancelTarget">キャンセル</button>
+      </div>
+
+      <div class="skill-detail" id="skillDetail">スキル説明がここに表示されます。</div>
+
+      <div class="system-buttons">
+        <button class="sub-button auto-button" type="button" id="autoButton">AUTO OFF</button>
+        <button class="sub-button" type="button" id="resetButton">選択画面へ</button>
+      </div>
+    </section>
+
+    <div class="result-overlay" id="resultOverlay" hidden>
+      <div class="result-box" id="resultText">勝利！</div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
